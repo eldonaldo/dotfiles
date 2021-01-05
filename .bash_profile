@@ -31,7 +31,6 @@ alias drd='docker images --quiet --filter=dangling=true | xargs docker rmi -f'
 export PATH=/usr/local/Cellar/:$PATH
 export PATH="/usr/local/opt/node@10/bin:$PATH"
 export PATH="/Users/nico/.local/bin:$PATH"
-export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="/Users/nico/anaconda3/bin/:$PATH"
 
 # >>> conda initialize >>>
@@ -58,3 +57,8 @@ alias node10='/usr/local/opt/node@10/bin/node'
 # Hide big sur zsh warning
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
+# Ruby and docker-sync
+export PATH="/usr/local/opt/ruby@2.6/bin:$PATH"
+if which ruby >/dev/null && which gem >/dev/null; then
+	PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
